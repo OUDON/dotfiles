@@ -73,7 +73,6 @@ augroup END
 " テンプレート
 autocmd BufNewFile *.cpp 0r $HOME/.vim/template/cpp.txt
 
-
 " クリップボード連携
 set clipboard+=unnamed
 
