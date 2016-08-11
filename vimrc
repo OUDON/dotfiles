@@ -16,6 +16,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle で管理するプラグインを追加します。
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'othree/html5.vim'
+NeoBundle 'itchyny/lightline.vim'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
@@ -78,3 +79,9 @@ set clipboard+=unnamed
 
 " エンコーディング
 set fileencodings=utf-8,sjis,euc-jp
+
+" ステータスライン
+set laststatus=2
+let g:lightline = {
+    \ 'colorscheme' : 'wombat'
+    \ }
