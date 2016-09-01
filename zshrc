@@ -21,8 +21,8 @@ alias -s cpp=vim
 
 ### Alias for Competitive Programming #""
 alias topcoder='open /Applications/TopCoder/ContestAppletProd.jnlp'
-alias ACGet='python ~/procon/atcoder/tools/ACGet.py'
-alias ACTest='python ~/procon/atcoder/tools/ACTest.py'
+alias acget='python ~/procon/atcoder/tools/ACGet.py'
+alias actest='python ~/procon/atcoder/tools/ACTest.py'
 
 
 ### pyenv ###
