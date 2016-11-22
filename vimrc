@@ -59,19 +59,24 @@ set undodir=$HOME/.vim/undodir
 set undofile
 
 " インデント関係
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set smartindent
 
 " 拡張子によってタブ幅を変える
 " http://qiita.com/mitsuru793/items/2d464f30bd091f5d0fef
 augroup fileTypeIndent
     autocmd!
-    autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.py  setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.c   setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rb  setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufNewFIle,BufRead *.erb setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
+
+" シンタックス
+autocmd BufNewFile,BufRead *.json.jbuilder set ft=ruby
 
 " テンプレート
 autocmd BufNewFile *.cpp 0r $HOME/.vim/template/cpp.txt

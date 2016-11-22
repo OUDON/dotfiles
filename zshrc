@@ -13,7 +13,9 @@ alias c++='c++-6 -D_GLIBCXX_DEBUG -std=c++11 -Wall -Wextra -Wshadow -g'
 alias g++='g++-6 -D_GLIBCXX_DEBUG -std=c++11 -Wall -Wextra -Wshadow -g'
 alias gcc='gcc-6'
 alias objdump='gobjdump -M intel -D'
+
 alias sed='gsed'
+alias ls='ls --color'
 
 alias -s py=python
 alias -s cpp=vim
@@ -23,6 +25,7 @@ alias -s cpp=vim
 alias topcoder='open /Applications/TopCoder/ContestAppletProd.jnlp'
 alias acget='python ~/procon/atcoder/tools/ACGet.py'
 alias actest='python ~/procon/atcoder/tools/ACTest.py'
+alias atcoder='python ~/procon/atcoder/tools/AtCoderTools.py'
 
 
 ### pyenv ###
