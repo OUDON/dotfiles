@@ -20,8 +20,9 @@ alias ls='ls --color'
 alias -s py=python
 alias -s cpp=vim
 
+alias be='bundle exec'
 
-### Alias for Competitive Programming #""
+### Alias for Competitive Programming ###
 alias topcoder='open /Applications/TopCoder/ContestAppletProd.jnlp'
 alias acget='python ~/procon/atcoder/tools/ACGet.py'
 alias actest='python ~/procon/atcoder/tools/ACTest.py'

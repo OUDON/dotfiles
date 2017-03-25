@@ -42,6 +42,9 @@ let g:neocomplcache_min_syntax_length = 5
 " 補完候補の選択にtabを使う
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
+set background=dark
+colorscheme nova
+
 " 挿入モードでのカーソル移動
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
