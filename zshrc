@@ -51,6 +51,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups
+setopt hist_ignore_all_dups
 setopt share_history
 setopt hist_reduce_blanks
 
@@ -167,3 +168,27 @@ function rprompt-git-current-branch {
 setopt prompt_subst
 
 RPROMPT='%{${fg[green]}%}[%{${reset_color}%}`rprompt-git-current-branch`%{${fg[green]}%}][%~]%{${reset_color}%}'
+
+### peco ###
+function peco-select-history()
+{
+  local tac
+  if which tac > /dev/null 2>&1; then
+    tac="tac"
+  else
+    tac="tail -r"
+  fi
+
+  BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
+function peco-select-file() {
+    LBUFFER+=$(\find . | \peco)
+    CURSOR=$#LBUFFER
+}
+zle -N peco-select-file
+bindkey '^f' peco-select-file
