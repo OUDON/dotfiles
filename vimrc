@@ -17,9 +17,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
  
 " NeoBundle で管理するプラグイン
 NeoBundle 'Shougo/neocomplcache.git'
-NeoBundle 'othree/html5.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'mrk21/yaml-vim'
+
+NeoBundle 'othree/html5.vim'
+NeoBundle 'elixir-editors/vim-elixir'
+NeoBundle 'posva/vim-vue'
 
 NeoBundleLazy 'vim-jp/cpp-vim', {
             \ 'autoload' : {'filetypes' : 'cpp'}
@@ -73,6 +76,8 @@ augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.py  setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.h   setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.hpp setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.c   setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb  setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufNewFIle,BufRead *.erb setlocal tabstop=2 softtabstop=2 shiftwidth=2

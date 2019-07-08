@@ -2,6 +2,8 @@ export LANG=ja_JP.UTF-8
 
 setopt auto_cd
 setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushd_silent
 
 setopt correct
 bindkey -v
@@ -9,32 +11,44 @@ bindkey -v
 
 ### Alias ###
 setopt complete_aliases
-alias c++='c++-6 -D_GLIBCXX_DEBUG -std=c++11 -Wall -Wextra -Wshadow -g'
-alias g++='g++-6 -D_GLIBCXX_DEBUG -std=c++11 -Wall -Wextra -Wshadow -g'
+alias c++='c++-6 -D_GLIBCXX_DEBUG -O2 -std=c++14 -Wall -Wextra -Wshadow -Wconversion -g'
+alias g++='g++-6 -D_GLIBCXX_DEBUG -O2 -std=c++14 -Wall -Wextra -Wshadow -Wconversion -g'
 alias gcc='gcc-6'
 alias objdump='gobjdump -M intel -D'
+alias julia='/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia'
 
 alias sed='gsed'
-alias ls='ls --color'
+alias ls='ls --color --hide="*.pyc"'
+alias vim='nvim'
 
 alias -s py=python
 alias -s cpp=vim
 
 alias be='bundle exec'
+alias ruby='ruby -w'
+
+if builtin command -v bat > /dev/null; then
+  alias cat='bat'
+fi
+
 
 ### Alias for Competitive Programming ###
 alias topcoder='open /Applications/TopCoder/ContestAppletProd.jnlp'
-alias acget='python ~/procon/atcoder/tools/ACGet.py'
-alias actest='python ~/procon/atcoder/tools/ACTest.py'
-alias atcoder='python ~/procon/atcoder/tools/AtCoderTools.py'
-
 
 ### pyenv ###
 export PYENV_ROOT="${HOME}/.pyenv"
-# if [ -d "${PYENV_ROOT}" ]; then
-export PATH=${PYENV_ROOT}/bin:$PATH
-eval "$(pyenv init -)"
-# fi
+if [ -d "${PYENV_ROOT}" ]; then
+  export PATH=${PYENV_ROOT}/bin:$PATH
+  eval "$(pyenv init -)"
+fi
+
+
+### proxy_env ###
+if [ -z "${PROXY_ENV_ROOT}" ]; then
+  export PROXY_ENV_ROOT="$HOME/util/proxy_env"
+  export PATH=$PROXY_ENV_ROOT/bin:$PATH
+  eval "$(proxy_env init)"
+fi
 
 
 # Reference : http://d.hatena.ne.jp/oovu70/20120405/p1
@@ -186,9 +200,18 @@ function peco-select-history()
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
-function peco-select-file() {
-    LBUFFER+=$(\find . | \peco)
-    CURSOR=$#LBUFFER
+function peco-select-file()
+{
+  local selected_file="$(find . ! -path "*/.*" | peco)"
+  if [ -n "$selected_file" ]; then
+    RBUFFER=$selected_file
+    CURSOR=$#BUFFER
+  fi
+  zle clear-screen
 }
+#   function peco-select-file() {
+#       BUFFER=$(\find . | peco --query "$LBUFFER")
+#       CURSOR=$#BUFFER
+#   }
 zle -N peco-select-file
 bindkey '^f' peco-select-file

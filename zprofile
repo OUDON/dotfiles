@@ -4,6 +4,7 @@ export LD_LIBRARY_PATH=/usr/local/Cellar/boost/1.60.0_1/lib:$LD_LIBRARY_PTH
 export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
 export PATH=$PATH:/sdk/android_sdk/platform-tools
 export PATH="/usr/local/Trolltech/Qt-4.7.1/bin:$PATH"
+export PATH="/usr/local/opt/qt/bin:$PATH"
 
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
 export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}
@@ -15,3 +16,6 @@ eval "$(rbenv init -)"
 
 export GOPATH=$HOME/.go
 export PATH=$GOPATH/bin:$PATH
+
+export PATH=$PATH:$HOME/.nodebrew/current/bin
+export PATH=$PATH:$HOME/.composer/vendor/bin
